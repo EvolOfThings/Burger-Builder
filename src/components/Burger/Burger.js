@@ -9,7 +9,7 @@ const burger = (props) => {
 
     //obj key(name of ig) is passed to map to
     // return w/ new array of length of each key's value respectively.
-     transformedIngredients = transformedIngredients.map(igKey => {
+      transformedIngredients = transformedIngredients.map(igKey => {
         console.log(props.ingredients[igKey]); //key's value as array length
 
         // the length of each array is important not the elem
