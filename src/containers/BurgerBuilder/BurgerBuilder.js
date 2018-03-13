@@ -119,6 +119,6 @@ class BurgerBuilder extends Component {
             </Fragment>
             );
     }
-}
+    }
 
 export default BurgerBuilder;
