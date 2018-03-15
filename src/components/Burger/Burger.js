@@ -5,12 +5,12 @@ import classes from './Burger.css';
 const burger = (props) => {
     //to convert object into array, this contains only the keys of obj
     let transformedIngredients = Object.keys(props.ingredients);
-    console.log(transformedIngredients);
+    //console.log(transformedIngredients);
 
     //obj key(name of ig) is passed to map to
     // return w/ new array of length of each key's value respectively.
       transformedIngredients = transformedIngredients.map(igKey => {
-        console.log(props.ingredients[igKey]); //key's value as array length
+       // console.log(props.ingredients[igKey]); //key's value as array length
 
         // the length of each array is important not the elem
         //spread has stripped them out of Array(). the undefined array items are inside a new array.
@@ -26,7 +26,7 @@ const burger = (props) => {
     .reduce((previousValue, currentValue) => {
         return previousValue.concat(currentValue)
     }, []);
-    console.log(transformedIngredients);
+    //console.log(transformedIngredients);
     if(transformedIngredients.length === 0) {
         transformedIngredients = <p>Please add ingredients</p>
     }
