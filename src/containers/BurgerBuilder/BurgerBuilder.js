@@ -3,6 +3,7 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import axios from '../../axios-orders';
 
 const   INGREDIENT_PRICES = {
     salad: 20,
@@ -88,7 +89,26 @@ class BurgerBuilder extends Component {
     }
 
     purchaseContinueHandler = () => {
-        alert('API for web server is not yet setup.');
+        //alert('web server is not yet setup.');
+        //'order.json' gets appended to baseURL
+        // .json end point need to target for firebase to work correctly
+        const order = {
+            ingredient: this.state.ingredients,
+            price: this.state.totalPrice, //usually price shld be calculate on the server
+            customer: {
+                name: 'Rishad',
+                address: {
+                    street: 'Nada St',
+                    zipCode: '4523232',
+                    country: 'India'
+                },
+                email: 'testing@tester.com'
+            },
+            deliveryMethod: 'fastest'
+        }
+        axios.post('/orders.json', order)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
     }
 
     render () {
