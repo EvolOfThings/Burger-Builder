@@ -10,13 +10,19 @@ const withErrorHandler = (WrappedComponent, axios ) => {
         }
 
         componentWillMount () {
-            axios.interceptors.request.use(req => {
+            this.reqInterceptor = axios.interceptors.request.use(req => {
                 this.setState({error: null}); //to get rid off error(from prev state) when sending a req
                 return req;
             });
-            axios.interceptors.response.use(res => res, error => {
+            this.resInterceptor = axios.interceptors.response.use(res => res, error => {
                 this.setState({error: error}); // state error is set to the error that we get from firebase
             });
+        }
+
+        //Remove interceptors to prevent memory leak
+        componentWillUnmount () {
+            axios.interceptors.request.eject(this.reqInterceptor);
+            axios.interceptors.response.eject(this.resInterceptor);
         }
 
         errorConfirmedHandler = () => {
