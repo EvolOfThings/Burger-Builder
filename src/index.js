@@ -2,14 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import {BrowserRouter} from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
 
 const rootEl = document.getElementById('root')
 
-ReactDOM.render(
-  <App />,
-  rootEl
-)
+const app = (
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>
+    )
+
+ReactDOM.render(app, rootEl)
 
 if (module.hot) {
   module.hot.accept('./App', () => {
