@@ -3,7 +3,7 @@ import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
-import {Route} from 'react-route-dom';
+import {Route} from 'react-router-dom';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -28,6 +28,7 @@ class BurgerBuilder extends Component {
     }
 
     componentDidMount () {
+        console.log(this.props);
         axios.get('https://react-burger-builder-5bd83.firebaseio.com/ingredients.json')
         .then(response => {
             this.setState({ingredients: response.data});
@@ -101,30 +102,31 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         //alert('web server is not yet setup.');
-        this.setState({loading: true});
-        //'order.json' gets appended to baseURL
-        // .json end point need to target for firebase to work correctly
-        const order = {
-            ingredient: this.state.ingredients,
-            price: this.state.totalPrice, //usually price shld be calculate on the server
-            customer: {
-                name: 'Rishad',
-                address: {
-                    street: 'Nada St',
-                    zipCode: '4523232',
-                    country: 'India'
-                },
-                email: 'testing@tester.com'
-            },
-            deliveryMethod: 'fastest'
-        }
-        axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({loading: false, purchasing: false});
-            })
-            .catch(error => {
-                this.setState({loading: false});
-            });
+        // this.setState({loading: true});
+        // //'order.json' gets appended to baseURL
+        // // .json end point need to target for firebase to work correctly
+        // const order = {
+        //     ingredient: this.state.ingredients,
+        //     price: this.state.totalPrice, //usually price shld be calculate on the server
+        //     customer: {
+        //         name: 'Rishad',
+        //         address: {
+        //             street: 'Nada St',
+        //             zipCode: '4523232',
+        //             country: 'India'
+        //         },
+        //         email: 'testing@tester.com'
+        //     },
+        //     deliveryMethod: 'fastest'
+        // }
+        // axios.post('/orders.json', order)
+        //     .then(response => {
+        //         this.setState({loading: false, purchasing: false});
+        //     })
+        //     .catch(error => {
+        //         this.setState({loading: false});
+        //     });
+        this.props.history.push('/checkout');
     }
 
     render () {
