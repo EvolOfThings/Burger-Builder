@@ -15,7 +15,7 @@ class ContactData extends Component {
                     type: 'text',
                     placeholder: 'Your Name'
                 },
-                value: ''
+                value: '' //value that's shown on the screen
             },
             street: {
                 elementType: 'input',
@@ -86,6 +86,22 @@ class ContactData extends Component {
             });
     }
 
+    inputChangeHandler = (event, inputIndentifier) => {
+        //this doesnt create deep clone, nested objs wouldn't be cloned
+        //the pointers are still there so they will mutate the original state hence further cloning in line 96
+        const updatedOrderForm = {
+            ...this.state.orderForm
+        };
+        //cloning the nested object inside the state using id i.e. the key
+        const updatedFormElement = {
+            ...updatedOrderForm[inputIndentifier]
+        };
+        //if we are changing  the elementConfig which is nested within nested state then we clone it as above
+        updatedFormElement.value = event.target.value;
+        updatedOrderForm[inputIndentifier] = updatedFormElement;
+        this.setState({orderForm: updatedOrderForm});
+    }
+
     render () {
         const formElementArray =[];
         for (let key in this.state.orderForm) {
@@ -101,7 +117,8 @@ class ContactData extends Component {
                     key={formElement.id}
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
-                    value={formElement.config.value}        />
+                    value={formElement.config.value}
+                    changed={(event) => this.inputChangeHandler(event, formElement.id)} />
                     ))}
                 <Button btnType="Success" clicked={this.orderHandler}>ORDER</Button>
             </form>
