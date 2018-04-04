@@ -10,7 +10,7 @@ class ContactData extends Component {
     state = {
         orderForm : {
             name: {
-                elementType: 'input',
+                elementType: 'input',  //you could write a function that creates this and just call it
                 elementConfig: {
                     type: 'text',
                     placeholder: 'Your Name'
