@@ -102,30 +102,6 @@ class BurgerBuilder extends Component {
 
     purchaseContinueHandler = () => {
         //alert('web server is not yet setup.');
-        // this.setState({loading: true});
-        // //'order.json' gets appended to baseURL
-        // // .json end point need to target for firebase to work correctly
-        // const order = {
-        //     ingredient: this.state.ingredients,
-        //     price: this.state.totalPrice, //usually price shld be calculate on the server
-        //     customer: {
-        //         name: 'Rishad',
-        //         address: {
-        //             street: 'Nada St',
-        //             zipCode: '4523232',
-        //             country: 'India'
-        //         },
-        //         email: 'testing@tester.com'
-        //     },
-        //     deliveryMethod: 'fastest'
-        // }
-        // axios.post('/orders.json', order)
-        //     .then(response => {
-        //         this.setState({loading: false, purchasing: false});
-        //     })
-        //     .catch(error => {
-        //         this.setState({loading: false});
-        //     });
 
         //to pass the ingredients from built burger
         const queryParams = [];
@@ -137,6 +113,7 @@ class BurgerBuilder extends Component {
             // queryParams.push(p);
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]));
         }
+        queryParams.push('price=' + this.state.totalPrice);
         const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
