@@ -90,6 +90,7 @@ class ContactData extends Component {
                     ]
                 },
                 value: '',
+                validation: {},
                 valid: true
             }
         },
@@ -127,6 +128,12 @@ class ContactData extends Component {
 
     checkValidity(value, rules) {
         let isValid = true;
+
+        //delivery method causes error upon selecting value bcuz there is no validation
+        //this is one way of solving it and the other is just null validation. both are implemented.
+        if(!rules) {
+            return true;
+        }
 
         if(rules.required) {
             isValid = value.trim() !== '' && isValid; //isValid is updated depending on value not equal to empty string
