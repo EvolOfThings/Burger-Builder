@@ -19,7 +19,9 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                errorValue: 'full name'
             },
             street: {
                 elementType: 'input',
@@ -31,7 +33,9 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                errorValue: 'street address'
             },
             zipCode: {
                 elementType: 'input',
@@ -45,7 +49,9 @@ class ContactData extends Component {
                     minLength: 4,
                     maxLength: 6
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                errorValue: 'zipcode'
             },
             country: {
                 elementType: 'input',
@@ -57,19 +63,23 @@ class ContactData extends Component {
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                errorValue: 'country'
             },
             email: {
                 elementType: 'input',
                 elementConfig: {
                     type: 'email',
-                    placeholder: 'Your E-Mail'
+                    placeholder: 'E-Mail Address'
                 },
                 value: '',
                 validation: {
                     required: true
                 },
-                valid: false
+                valid: false,
+                touched: false,
+                errorValue: 'email address'
             },
             deliveryMethod: {
                 elementType: 'select',
@@ -143,7 +153,8 @@ class ContactData extends Component {
         };
         //if we are changing  the elementConfig which is nested within nested state then we clone it as above
         updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation)
+        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
+        updatedFormElement.touched = true;
         updatedOrderForm[inputIndentifier] = updatedFormElement;
         console.log(updatedFormElement);
         this.setState({orderForm: updatedOrderForm});
@@ -165,6 +176,10 @@ class ContactData extends Component {
                     elementType={formElement.config.elementType}
                     elementConfig={formElement.config.elementConfig}
                     value={formElement.config.value}
+                    valueType={formElement.config.errorValue}
+                    invalid={!formElement.config.valid}
+                    shouldValidate={formElement.config.validation}
+                    touched={formElement.config.touched}
                     changed={(event) => this.inputChangeHandler(event, formElement.id)} />
                     ))}
                 <Button btnType="Success">ORDER</Button>
