@@ -8,7 +8,7 @@ import registerServiceWorker from './registerServiceWorker';
 const rootEl = document.getElementById('root')
 
 const app = (
-    <BrowserRouter>
+    <BrowserRouter basename="/Burger-Builder-React/">
         <App />
     </BrowserRouter>
     )
