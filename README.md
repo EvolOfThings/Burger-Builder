@@ -17,7 +17,7 @@ Using react router package to make the app behave to have multiple pages but in 
 - Styling of React components
 - A deep dive into the internals of React and advanced component features
 - How to access http content from within React app (AJAX) - axios package
-- Posting and fetching data from firebase databse
+- Posting and fetching data from firebase database
 - Forms and form validation in React app
 
 Under guidance of awesome teacher @mschwarzmueller [Maximilian.](https://github.com/mschwarzmueller)
