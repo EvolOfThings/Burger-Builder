@@ -1,6 +1,6 @@
  Burger Builder
 ---
-_**Its all about the components!   Its all about the components!** [song pun intended]_
+_**Its all about the components!   Its all about the components!**_
 
 You can order your burger here [Build My Burger!](https://github.com/EvolOfThings/Burger-Builder-React)
 
@@ -20,4 +20,4 @@ Using react router package to make the app behave to have multiple pages but in 
 - Posting and fetching data from firebase database
 - Forms and form validation in React app
 
-Under guidance of awesome teacher @mschwarzmueller [Maximilian.](https://github.com/mschwarzmueller)
+With help of @mschwarzmueller [Maximilian.](https://github.com/mschwarzmueller)
