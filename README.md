@@ -20,4 +20,8 @@ Using react router package to make the app behave to have multiple pages but in 
 - Posting and fetching data from firebase database
 - Forms and form validation in React app
 
+###### On the process of learning
+
+- Implementing Redux
+
 With help of @mschwarzmueller [Maximilian.](https://github.com/mschwarzmueller)
